@@ -10,15 +10,15 @@ class Topbar extends Component {
             <div className="Leftbar">
                 <ul className="menu">
                     <li className="active">
-                        <i className="iconfont icon-wode" /><br/>
+                        <i className="iconfont icon-user" /><br/>
                         <a>我的</a>
                     </li>
                     <li>
-                        <i className="iconfont icon-sousuo" /><br/>
+                        <i className="iconfont icon-search" /><br/>
                         <a>搜索</a>
                     </li>
                     <li>
-                        <i className="iconfont icon-xiaoxi" /><br/>
+                        <i className="iconfont icon-message" /><br/>
                         <a>消息</a>
                     </li>
                     <li>

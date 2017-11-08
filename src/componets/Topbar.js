@@ -17,7 +17,7 @@ class Topbar extends Component {
             }, {
                 value: 2,
                 label: '按过期时间',
-                iconName: 'icon-shijian5'
+                iconName: 'icon-time'
             }],
             levelValue: ''
         }
