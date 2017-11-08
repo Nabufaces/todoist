@@ -1,7 +1,48 @@
-.topbar {
-  width: 100%;
-  height: 100px;
-  title {
-    display: block;
+.Topbar {
+  height: 56px;
+  padding: 0 30px;
+  border-bottom: 1px solid #eeece8;
+  margin-left: 62px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .m-tt {
+    color: #333;
+    font-size: 21px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 27px;
+      color: #acaba7;
+      margin-right: 15px;
+    }
+  }
+  .m-mn {
+    .todo-list {
+      height: 56px;
+      li {
+        float: left;
+        margin: 0 6px;
+        display: inline-block;
+        a {
+          display: block;
+          font-size: 16px;
+          line-height: 26px;
+          padding: 14px 8px;
+          color: #777;
+          &.active {
+            color: #da4f4a;
+            border-bottom:2px solid #da4f4a;
+          }
+        }
+      }
+    }
+  }
+  .m-level {
+    display: inline-block;
+    .el-button {
+      padding: 9px 15px;
+    }
   }
 }
