@@ -3,7 +3,7 @@ import Task from './Task';
 import '../css/Main.less';
 
 class Main extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             taskList : [
@@ -12,7 +12,8 @@ class Main extends Component {
                 taskType: 1,
                 items: {
                     level: 1,
-                    title: '产品库需求修改,产品库需求修改',
+                    title: '产品库需求修改',
+                    content:'后台增加CMS的搜索热刺排行榜',
                     time: 1510385400000,
                     overdue: true
                 }
@@ -22,13 +23,14 @@ class Main extends Component {
                 items: {
                     level: 3,
                     title: '产品库需求修改,产品库需求修改',
+                    content:'向下滚动频道tab悬浮在浏览器顶部',
                     time: 1510385400000,
                     overdue: false
                 }
             }]
         };
     }
-    addTask(){
+    addTask() {
         let taskList = this.state.taskList;
         taskList.push({
             taskId: 123,
@@ -44,7 +46,7 @@ class Main extends Component {
             taskList: taskList
         })
     }
-    handleCheck(taskId){
+    handleCheck(taskId) {
         let taskList = this.state.taskList;
         taskList.forEach((item) => {
             if(item.taskId === parseInt(taskId, 10)) {
@@ -55,7 +57,7 @@ class Main extends Component {
             taskList: taskList
         })
     }
-    handleClose(taskId){
+    handleClose(taskId) {
         let taskList = this.state.taskList;
         let index = -1;
         taskList.forEach((item, item_index) => {
@@ -70,11 +72,23 @@ class Main extends Component {
             taskList: taskList
         })
     }
+    handleChangeValue(value, taskId) {
+        let taskList = this.state.taskList;
+        taskList.forEach((item) => {
+            if(item.taskId === parseInt(taskId, 10)) {
+                item.items.content = value;
+            }
+        });
+        this.setState({
+            taskList: taskList
+        })
+    }
     render(){
         const taskList = this.state.taskList.map((item, index) => {
             return <Task item={item} key={index} addTask={this.addTask.bind(this)}
                          handleCheck={this.handleCheck.bind(this)}
-                         handleClose={this.handleClose.bind(this)}/>
+                         handleClose={this.handleClose.bind(this)}
+                         handleChangeValue={this.handleChangeValue.bind(this)}/>
         });
 
         return(
