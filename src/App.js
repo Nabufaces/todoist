@@ -4,6 +4,7 @@ import './App.css';
 import './css/icon/iconfont.css';
 import Leftbar from './componets/Leftbar';
 import Topbar from './componets/Topbar';
+import Main from './componets/Main'
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="app">
           <Leftbar/>
           <Topbar/>
+          <Main/>
       </div>
     );
   }

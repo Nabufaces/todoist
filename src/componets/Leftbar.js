@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Leftbar.less';
+// import { Link } from 'react-router-dom'
 
 class Topbar extends Component {
     showUser() {
@@ -10,8 +11,8 @@ class Topbar extends Component {
             <div className="Leftbar">
                 <ul className="menu">
                     <li className="active">
-                        <i className="iconfont icon-user" /><br/>
-                        <a>我的</a>
+                            <i className="iconfont icon-user" /><br/>
+                            <a>我的</a>
                     </li>
                     <li>
                         <i className="iconfont icon-search" /><br/>

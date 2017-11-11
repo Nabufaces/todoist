@@ -1,0 +1,72 @@
+.Task {
+  display: inline-block;
+  margin: 7px 0 0 10px;
+  padding-bottom: 6px;
+  border-radius: 4px;
+  background: #eeece8;
+  .m-hd {
+    padding-left: 10px;
+    color: #6f6e6b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      font-size: 16px;
+      padding: 7px 9px;
+    }
+    .close {
+      font-size: 12px;
+      margin-right: 15px;
+    }
+  }
+  .m-mn {
+    padding: 10px;
+    margin: 0 10px;
+    background: #fff;
+    .title {
+      display: flex;
+      .check {
+        width: 14px;
+        height: 14px;
+        line-height: 16px;
+        font-size: 10px;
+        border: 1px solid #e1ddd5;
+        cursor: pointer;
+        &:hover {
+          border-color: #5cb76f;
+        }
+        &.checked {
+          color: #5cb76f;
+        }
+      }
+      .cnt {
+        max-width: 200px;
+        color: #484744;
+        white-space: normal;
+        word-wrap: break-word;
+        word-break: break-all;
+        margin: -3px 0 0 8px;
+        &.finish {
+          color: #999;
+          text-decoration: line-through;
+        }
+      }
+    }
+    .desc {
+      color: #acaba7;
+      font-size: 11px;
+      margin: 10px 11px 0 32px;
+      .overdue {
+        color: #e68481;
+      }
+      span:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+  .m-ft {
+    color: #bcb7af;
+    font-size: 14px;
+    padding: 15px 8px 0 10px;
+  }
+}

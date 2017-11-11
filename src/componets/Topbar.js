@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Select } from 'element-react';
 import '../css/Topbar.less';
 
+
 class Topbar extends Component {
     constructor(props){
         super(props);
@@ -32,8 +33,8 @@ class Topbar extends Component {
                 </div>
                 <div className="m-mn">
                     <ul className="todo-list">
+                        <li><a>未开始</a></li>
                         <li><a className="active">待办</a></li>
-                        <li><a>进行中</a></li>
                         <li><a>完成</a></li>
                     </ul>
                 </div>
