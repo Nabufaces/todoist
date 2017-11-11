@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Task from './Task';
+import TaskDetail from './TaskDetail';
 import '../css/Main.less';
 
 class Main extends Component {
@@ -27,7 +28,9 @@ class Main extends Component {
                     time: 1510385400000,
                     overdue: false
                 }
-            }]
+            }],
+            showDetail: false,
+            showDetailItem: {}
         };
     }
     addTask() {
@@ -57,7 +60,7 @@ class Main extends Component {
             taskList: taskList
         })
     }
-    handleClose(taskId) {
+    handleDelete(taskId) {
         let taskList = this.state.taskList;
         let index = -1;
         taskList.forEach((item, item_index) => {
@@ -83,17 +86,39 @@ class Main extends Component {
             taskList: taskList
         })
     }
+    handleShowDetail(taskId) {
+        const taskList = this.state.taskList;
+        const task = taskList.filter((item) => {
+            return item.taskId === parseInt(taskId, 10);
+        });
+        this.setState({
+            showDetail: true,
+            showDetailItem: task[0]
+        })
+    }
+    handleDetailClose() {
+        this.setState({
+            showDetail: false
+        })
+    }
     render(){
         const taskList = this.state.taskList.map((item, index) => {
             return <Task item={item} key={index} addTask={this.addTask.bind(this)}
                          handleCheck={this.handleCheck.bind(this)}
-                         handleClose={this.handleClose.bind(this)}
-                         handleChangeValue={this.handleChangeValue.bind(this)}/>
+                         handleDelete={this.handleDelete.bind(this)}
+                         handleChangeValue={this.handleChangeValue.bind(this)}
+                         handleShowDetail={this.handleShowDetail.bind(this)}/>
         });
 
         return(
             <div className="Main">
-                {taskList}
+                <div className="group">
+                    {taskList}
+                    {this.state.showDetail &&
+                    <TaskDetail item={this.state.showDetailItem}
+                                handleDetailClose={this.handleDetailClose.bind(this)}
+                                handleChangeValue={this.handleChangeValue.bind(this)}/>}
+                </div>
             </div>
         );
     }

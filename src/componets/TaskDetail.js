@@ -33,7 +33,7 @@ class TaskDetail extends Component {
         });
     }
     handleBlur() {
-        this.props.handleChangeValue(this.state.value);
+        this.props.handleChangeValue(this.state.value, this.props.item.taskId);
         this.setState({
             showInput: false
         });
