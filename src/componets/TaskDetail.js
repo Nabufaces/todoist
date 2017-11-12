@@ -81,7 +81,7 @@ class TaskDetail extends Component {
                             <Icon name="time" />
                             <span>截止日期</span>
                         </dt>
-                        <dd className="box">
+                        <dd className={`box ${utils.judgeOverdue(this.props.item.items.time) ? 'overdue' : ''}`}>
                             {utils.handleFormat(this.props.item.items.time, 'yyyy-MM-dd')}
                         </dd>
                     </dl>

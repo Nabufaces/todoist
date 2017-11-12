@@ -37,13 +37,13 @@ class Task extends Component {
                         </a>
                     </div>
                     <div className="desc">
-                        <span className={this.props.item.items.overdue ? 'overdue' : ''}>
+                        <span className={utils.judgeOverdue(this.props.item.items.time) ? 'overdue' : ''}>
                             <Icon name="time" /> {utils.handleFormat(this.props.item.items.time, 'MM-dd')}
                         </span>
                         <span><Tag type="danger">P{this.props.item.items.level}</Tag></span>
                     </div>
                 </div>
-                <div className="m-ft" onClick={this.props.addTask}>
+                <div className="m-ft" onClick={this.props.handleAddTask}>
                     <Icon name="plus" /> 新建事项
                 </div>
             </div>

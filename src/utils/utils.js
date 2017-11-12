@@ -19,8 +19,14 @@ const handleFormat = (value, format = "yyyy-MM-dd HH:mm") => {
     });
 };
 
+const judgeOverdue = (time) => {
+    const now = (new Date()).valueOf();
+    return now > time;
+};
+
 const utils = {
-    handleFormat: handleFormat
+    handleFormat,
+    judgeOverdue
 };
 
 export default utils;
