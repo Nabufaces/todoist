@@ -8,6 +8,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            value: '',
             taskList : [
             {
                 taskId: 1,
@@ -54,17 +55,15 @@ class Main extends Component {
         let addTaskForm = this.state.addTaskForm;
         addTaskForm.items[key] = value;
         this.setState({
-            addTaskForm
+            items: addTaskForm.items
         });
     }
     handleAddTaskSubmit() {
         let addTaskForm = this.state.addTaskForm;
         let taskList = this.state.taskList;
-        addTaskForm.items.time = addTaskForm.items.time.valueOf();
         taskList.push(addTaskForm);
         this.setState({
             showAddModal: false,
-            addTaskForm,
             taskList
         });
     }
@@ -130,15 +129,25 @@ class Main extends Component {
                          handleShowDetail={this.handleShowDetail.bind(this)}/>
         });
 
-        const AddForm = () => {
-            return(
+        return(
+            <div className="Main">
+                <div className="group">
+                    {TaskList}
+                    {this.state.showDetail &&
+                    <TaskDetail item={this.state.showDetailItem}
+                                handleDetailClose={this.handleDetailClose.bind(this)}
+                                handleChangeValue={this.handleChangeValue.bind(this)}/>}
+                </div>
                 <Dialog
                     title="新增事项"
-                    visible={ this.state.showAddModal }
-                    onCancel={ () => this.setState({ showAddModal: false }) }
+                    visible={this.state.showAddModal}
+                    onCancel={() => this.setState({showAddModal: false})}
                 >
                     <Dialog.Body>
-                        <Form model={this.state.addTaskForm} labelWidth="100">
+                        <Form model={this.state.addTaskForm} labelWidth="100"
+                              onSubmit={(e) => {
+                                  e.preventDefault()
+                              }}>
                             <Form.Item label="事项标题">
                                 <Input type="text" value={this.state.addTaskForm.items.title}
                                        onChange={this.handleAddChange.bind(this, 'title')}
@@ -147,7 +156,7 @@ class Main extends Component {
                             <Form.Item label="事项内容">
                                 <Input value={this.state.addTaskForm.items.content}
                                        type="textarea"
-                                       autosize={{ minRows: 3, maxRows: 5}}
+                                       autosize={{minRows: 3, maxRows: 5}}
                                        onChange={this.handleAddChange.bind(this, 'content')}/>
                             </Form.Item>
                             <Form.Item label="提交事件">
@@ -159,31 +168,18 @@ class Main extends Component {
                             </Form.Item>
                             <Form.Item label="设置优先级">
                                 <Select value={this.state.addTaskForm.items.level}>
-                                    <Select.Option label="P1" value={1} />
-                                    <Select.Option label="P2" value={2} />
-                                    <Select.Option label="P3" value={3} />
+                                    <Select.Option label="P1" value={1}/>
+                                    <Select.Option label="P2" value={2}/>
+                                    <Select.Option label="P3" value={3}/>
                                 </Select>
                             </Form.Item>
                             <Form.Item>
                                 <Button type="success" onClick={this.handleAddTaskSubmit.bind(this)}>立即创建</Button>
-                                <Button onClick={ () => this.setState({ showAddModal: false }) }>取消</Button>
+                                <Button onClick={() => this.setState({showAddModal: false})}>取消</Button>
                             </Form.Item>
                         </Form>
                     </Dialog.Body>
                 </Dialog>
-            )
-        }
-
-        return(
-            <div className="Main">
-                <div className="group">
-                    {TaskList}
-                    {this.state.showAddModal && <AddForm/>}
-                    {this.state.showDetail &&
-                    <TaskDetail item={this.state.showDetailItem}
-                                handleDetailClose={this.handleDetailClose.bind(this)}
-                                handleChangeValue={this.handleChangeValue.bind(this)}/>}
-                </div>
             </div>
         );
     }
